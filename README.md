@@ -2,8 +2,7 @@
 
 Your job is to implement a faux database of users, by utilizing an array
 for storing all the users. You also need to think about how to increment
-the id of a user by figuring out what the id of the latest user was
-before the insert
+the id of a user by having an id counter
 
 ## The routes you'll need:
 
