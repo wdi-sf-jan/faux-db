@@ -1,5 +1,6 @@
 require 'pry'
 require 'sinatra'
+require 'sinatra/json'
 require 'sinatra/reloader'
 require "better_errors"
 
@@ -12,47 +13,38 @@ users = []
 id = 1
 
 get '/' do
-  @users = users
   erb :index
 end
 
-get '/add' do
-  erb :add
+get '/index.json' do
+  @users = users
+  json @users
 end
 
-post '/add' do
+post '/create.json' do
   user = {}
   user[:id] = id
   user[:name] = params[:user]
   id += 1
   users << user
-  redirect '/'
+  json user
 end
 
-get '/edit/:id' do
-  users.each do |user|
-    if(params[:id].to_i == user[:id])
-      @user = user
-    end
-  end
-  erb :edit
-end
-
-put '/edit/:id' do
+put '/update/:id.json' do
   users.each do |user|
     if(params[:id].to_i == user[:id])
       user[:name] = params[:user]
       @user = user
     end
   end
-  redirect '/'
+  json nil
 end
 
-delete '/delete/:id' do
+delete '/delete/:id.json' do
   users.each_with_index do |user, index|
     if(params[:id].to_i == user[:id])
       users.delete_at(index)
     end
   end
-  redirect '/'
+  json nil
 end
