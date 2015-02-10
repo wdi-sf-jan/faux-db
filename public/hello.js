@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  var li;
-  var button;
+  var li, button, id;
   // define a function to show all the users
   function getUsers(){
     $.getJSON("/index.json", function(data){
@@ -12,7 +11,7 @@ $(document).ready(function(){
       });
     });
   }
-  //call that function
+  //call the function to get the list of users
   getUsers();
 
   // when the add new user form is submitted, fire an ajax call to add a new one
