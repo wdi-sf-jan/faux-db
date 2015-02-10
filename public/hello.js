@@ -2,7 +2,7 @@ $(document).ready(function(){
   var li, button, id;
   // define a function to show all the users
   function getUsers(){
-    $.getJSON("/index.json", function(data){
+    $.getJSON("/users.json", function(data){
       data.forEach(function(user){
         li = $("<li data-id=" + user.id+"><span class='name show'>" + user.name + " </span></li>");
         button = $(" <button class='delete'></button>").text("Delete");
@@ -19,7 +19,7 @@ $(document).ready(function(){
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: "/create.json",
+      url: "/users.json",
       data: {user: $("#user").val()},
       success: function(user){
         li = $("<li data-id=" + user.id+"><span class='name show'>" + user.name + "</span></li>");
@@ -53,7 +53,7 @@ $(document).ready(function(){
     $.ajax({
       type: "PUT",
       data: {user: $(".newName").val()},
-      url: "/update/" + id +".json",
+      url: "/users/" + id +".json",
       success: function(data){
         _this.parent().text($(".newName").val());
         $(".name").addClass("show");
@@ -72,7 +72,7 @@ $(document).ready(function(){
     id = $(this).parent().data("id");
     $.ajax({
       type: "DELETE",
-      url: "/delete/" + id +".json",
+      url: "/users/" + id +".json",
       success: function(data){
         _this.parent().remove();
         console.log("Deleted!");

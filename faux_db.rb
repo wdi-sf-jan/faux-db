@@ -16,12 +16,12 @@ get '/' do
   erb :index
 end
 
-get '/index.json' do
+get '/users.json' do
   @users = users
   json @users
 end
 
-post '/create.json' do
+post '/users.json' do
   user = {}
   user[:id] = id
   user[:name] = params[:user]
@@ -30,7 +30,7 @@ post '/create.json' do
   json user
 end
 
-put '/update/:id.json' do
+put '/users/:id.json' do
   users.each do |user|
     if(params[:id].to_i == user[:id])
       user[:name] = params[:user]
@@ -40,7 +40,7 @@ put '/update/:id.json' do
   json nil
 end
 
-delete '/delete/:id.json' do
+delete '/users/:id.json' do
   users.each_with_index do |user, index|
     if(params[:id].to_i == user[:id])
       users.delete_at(index)
