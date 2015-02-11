@@ -10,6 +10,7 @@ end
 
 # this will store your users
 users = []
+id = 1
 
 # routes to implement:
 #
