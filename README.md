@@ -16,3 +16,5 @@ the id of a user by having an id counter
 ## Bonus
 
 Implement all the requests as AJAX requests
+
+In order to do this, you will need to send back JSON instead of an erb template. To send back JSON using Sinatra, see this guide http://www.sinatrarb.com/contrib/json.html. 
