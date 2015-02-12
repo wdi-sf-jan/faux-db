@@ -10,6 +10,12 @@ end
 
 # this will store your users
 users = []
+id = 1
+
+# this will store an id to user for your users
+# you'll need to increment it every time you add
+# a new user, but don't decrement it
+id = 1
 
 # routes to implement:
 #
